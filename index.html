@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="light" lang="th">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Checkout - perfume.studio.kk</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FFB7C5", 
+                        "background": "#FFFFFF", 
+                        "surface-container": "#FFF5F5", 
+                        "surface-container-lowest": "#FFFFFF",
+                        "outline": "#E5E7EB", 
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Manrope', sans-serif; background-color: #FFFFFF; color: #1a1c1c; }
+        .noto-serif { font-family: 'Noto Serif', serif; }
+        .manrope { font-family: 'Manrope', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        
+        .input-bespoke {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #E5E7EB; 
+            transition: all 0.4s ease-in-out;
+            padding: 1.25rem 0;
+            font-weight: 300;
+        }
+        .input-bespoke:focus {
+            ring: 0;
+            border-bottom: 1px solid #6f5092; 
+        }
+        
+        #slip-preview-img { max-height: 200px; display: none; border-radius: 1rem; margin-bottom: 1.5rem; border: 0.5px solid #FFB7C5; }
+    </style>
+</head>
+
+<body class="bg-background text-on-background min-h-screen">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-2xl flex justify-between items-center px-12 py-8 border-b border-pink-50">
+        <div class="text-xl font-serif italic text-pink-900 tracking-tighter">The Final Ritual</div>
+        <div class="flex items-center gap-6">
+            <span class="material-symbols-outlined text-primary text-xl">shopping_bag</span>
+        </div>
+    </nav>
+
+    <main class="pt-44 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <header class="mb-24 text-center">
+            <h1 class="noto-serif text-4xl md:text-5xl text-primary tracking-tight italic mb-6">Finalizing the Creation</h1>
+            <p class="manrope text-[10px] font-medium tracking-[0.5em] uppercase text-slate-400">กรุณาระบุข้อมูลเพื่อความสมบูรณ์ของขั้นตอนสุดท้าย</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
+            
+            <div class="lg:col-span-7 space-y-16">
+                
+                <section class="bg-white p-12 md:p-16 rounded-[56px] shadow-[0_4px_40px_rgba(0,0,0,0.01)] border border-pink-50">
+                    <div class="flex items-center gap-6 mb-16">
+                        <span class="text-[10px] uppercase tracking-[0.5em] font-bold text-primary">I</span>
+                        <h2 class="noto-serif text-2xl tracking-tight text-slate-800">Delivery Logistics</h2>
+                    </div>
+                    
+                    <div class="space-y-10">
+                        <div class="relative">
+                            <label class="manrope text-[9px] uppercase tracking-[0.3em] text-slate-400 mb-2 block font-bold">Recipient Name</label>
+                            <input id="cust-name" class="w-full input-bespoke text-sm" placeholder="โปรดระบุชื่อ-นามสกุล ผู้รับผลงาน" type="text"/>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <div class="relative">
+                                <label class="manrope text-[9px] uppercase tracking-[0.3em] text-slate-400 mb-2 block font-bold">Contact Number</label>
+                                <input id="cust-phone" class="w-full input-bespoke text-sm" placeholder="หมายเลขโทรศัพท์ติดต่อ" type="tel"/>
+                            </div>
+                            <div class="relative">
+                                <label class="manrope text-[9px] uppercase tracking-[0.3em] text-slate-400 mb-2 block font-bold">Destination Address</label>
+                                <input id="cust-address" class="w-full input-bespoke text-sm" placeholder="ข้อมูลที่อยู่โดยละเอียด" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-white p-12 md:p-16 rounded-[56px] shadow-[0_4px_40px_rgba(0,0,0,0.01)] border border-pink-50">
+                    <div class="flex items-center gap-6 mb-16">
+                        <span class="text-[10px] uppercase tracking-[0.5em] font-bold text-primary">II</span>
+                        <h2 class="noto-serif text-2xl tracking-tight text-slate-800">Financial Settlement</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                        <div class="space-y-8">
+                            <div class="bg-primary/5 p-8 rounded-[40px] flex flex-col items-center justify-center aspect-square border border-primary/10">
+                                <div class="w-44 h-44 bg-white p-3 rounded-2xl mb-6 shadow-sm border border-pink-50">
+                                    <img alt="Verification QR" class="w-full h-full mix-blend-multiply opacity-90" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PROMPTPAY_DATA"/>
+                                </div>
+                                <p class="manrope text-[10px] uppercase tracking-[0.3em] text-pink-900 font-bold">Encrypted QR Payment</p>
+                            </div>
+                            <div class="px-6 py-4 bg-white rounded-2xl border border-slate-50 shadow-sm">
+                                <p class="manrope text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Account Holder</p>
+                                <p class="manrope text-sm font-semibold text-slate-800 tracking-tight italic">K-Bank | KK STUDIO</p>
+                                <p class="manrope text-sm text-slate-500 font-light mt-1 tracking-widest">123 4 56789 0</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <label class="manrope text-[10px] uppercase tracking-[0.3em] text-slate-400 mb-6 font-bold">Payment Evidence</label>
+                            <input type="file" id="slip-upload" accept="image/*" class="hidden" onchange="previewSlip(this)">
+                            
+                            <div onclick="document.getElementById('slip-upload').click()" class="flex-grow border border-dashed border-pink-200 rounded-[40px] flex flex-col items-center justify-center p-10 bg-pink-50/20 hover:bg-pink-50/50 transition-all duration-700 cursor-pointer group">
+                                <img id="slip-preview-img" src="" alt="Proof Preview">
+                                <div id="upload-label" class="text-center group-hover:translate-y-[-4px] transition-transform duration-500">
+                                    <span class="material-symbols-outlined text-primary mb-4" style="font-size: 42px;">upload_file</span>
+                                    <p class="manrope text-[10px] text-primary font-bold uppercase tracking-widest">Upload Official Proof</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="lg:col-span-5 lg:sticky lg:top-44">
+                <div class="bg-surface-container p-14 rounded-[56px] shadow-[0_4px_40px_rgba(0,0,0,0.01)] border border-pink-50">
+                    <h3 class="noto-serif text-xl mb-12 text-slate-800 tracking-tight italic">Purchase Summary</h3>
+                    <div class="space-y-10 mb-12 pb-12 border-b border-pink-200/50">
+                        <div class="flex gap-8 items-center">
+                            <div class="w-28 h-32 bg-white rounded-[24px] overflow-hidden flex-shrink-0 border border-slate-100 p-4 shadow-sm">
+                                <img id="item-image" class="w-full h-full object-contain" src="eiei.png" onerror="this.src='https://via.placeholder.com/150?text=Bespoke'"/>
+                            </div>
+                            <div class="flex flex-col justify-center">
+                                <p id="scent-name" class="manrope text-[13px] font-bold text-on-surface uppercase tracking-[0.1em]">Custom Essence</p>
+                                <p id="scent-size" class="manrope text-[10px] uppercase tracking-widest text-slate-400 mt-3 font-semibold">50ml / Atelier Edition</p>
+                                <p class="text-[9px] italic text-primary mt-1">Eau de Parfum</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-baseline pt-6">
+                            <span class="manrope text-[11px] uppercase tracking-[0.4em] text-slate-500 font-medium">Grand Total</span>
+                            <span id="grand-total" class="manrope text-3xl font-light text-pink-950 tracking-tighter">THB 0.00</span>
+                        </div>
+                    </div>
+
+                    <button onclick="completeRitual()" id="submit-btn" class="w-full mt-14 bg-primary text-white py-7 rounded-[28px] manrope text-[11px] uppercase tracking-[0.6em] font-bold hover:bg-pink-900 transition-all duration-700 active:scale-[0.98] shadow-2xl shadow-primary/20">
+                        Confirm Appointment
+                    </button>
+                    
+                    <div class="mt-10 flex items-center justify-center gap-4 opacity-40">
+                        <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                        <p class="manrope text-[8px] uppercase tracking-[0.5em] font-medium text-slate-500">Secure Processing</p>
+                        <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="w-full border-t border-pink-50 bg-white px-12 py-20 text-center">
+        <div class="text-xl font-serif italic text-pink-950 mb-6 tracking-tighter">The Final Ritual</div>
+        <p class="manrope text-[9px] text-slate-400 uppercase tracking-[0.6em] leading-relaxed font-medium italic">Distilling purity into every bespoke essence.</p>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCnrh9ml3WzDM52Fe8cOMxXQ_cNR_e1OzA",
+            authDomain: "perfume-studio-kk-17495.firebaseapp.com",
+            projectId: "perfume-studio-kk-17495",
+            appId: "1:1088243416074:web:761a87067af6259fadb3f3"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const orderData = JSON.parse(localStorage.getItem('final_perfume')) || { scent: "Custom Essence", size: "50ml", price: "0" };
+        document.getElementById('scent-name').innerText = orderData.scent;
+        document.getElementById('scent-size').innerText = `${orderData.size} / Atelier Edition`;
+        document.getElementById('grand-total').innerText = `THB ${orderData.price}.00`;
+
+        window.previewSlip = function(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('slip-preview-img');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                    document.getElementById('upload-label').style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        window.completeRitual = async function() {
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const address = document.getElementById('cust-address').value;
+            const slipFile = document.getElementById('slip-upload').files[0];
+
+            if(!name || !phone || !address || !slipFile) {
+                alert("กรุณาระบุข้อมูลจัดส่งและแนบหลักฐานการโอนเงินให้ครบถ้วนเพื่อความสมบูรณ์ของขั้นตอน");
+                return;
+            }
+
+            const btn = document.getElementById('submit-btn');
+            btn.innerText = "PROCESSING...";
+            btn.disabled = true;
+
+            try {
+                const formData = new FormData();
+                formData.append("image", slipFile);
+                const apiKey = "64b4f23dd6d3db059804dba9151e4e94"; 
+                
+                const imgbbRes = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
+                    method: "POST",
+                    body: formData
+                });
+                const imgData = await imgbbRes.json();
+                
+                if (!imgData.success) throw new Error("Verification Denied");
+                const slipURL = imgData.data.url;
+
+                await addDoc(collection(db, "orders"), {
+                    customerName: name,
+                    phone: phone,
+                    address: address,
+                    orderDetail: orderData,
+                    slipImage: slipURL,
+                    status: "Awaiting Verification",
+                    createdAt: serverTimestamp()
+                });
+
+                alert("การส่งคำขอเสร็จสมบูรณ์ ขอบพระคุณที่คุณหนูมอบความไว้วางใจให้ทางสตูดิโอ");
+                localStorage.clear();
+                window.location.reload(); 
+
+            } catch (error) {
+                console.error("Error:", error);
+                alert("เกิดข้อผิดพลาดในการเชื่อมต่อข้อมูล: " + error.message);
+                btn.innerText = "Confirm Appointment";
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
